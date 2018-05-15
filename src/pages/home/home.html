@@ -1,14 +1,29 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>Home</ion-title>
   </ion-navbar>
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="newItem" (keyup.enter)="addItem()"
+                   (ionCancel)="this.newItem=''" placeholder="We Need..."></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button solid icon-right (click)="addItem()" style="marginright:12px;
+padding:21px 16px 21px 16px">Add
+        <ion-icon name="md-basket"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
+<ion-content (ionScroll)="onScroll($event)">
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <div padding>
+    <h2 style="color:#5b5b75">We Need...</h2>
+  </div>
+
+  <ion-list no-padding>
+    <ion-item-sliding *ngFor="let item of needItems | async">
+      <ion-item (click)="itemTapped($event, item)" detail-push>
+        <h1>{{item.name}}</h1>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
