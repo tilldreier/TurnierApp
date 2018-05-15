@@ -12,17 +12,17 @@ import { NewPage } from '../new/new';
 })
 export class HomePage {
 
-  needItems: Observable<any[]>;
+  tournaments: Observable<any[]>;
   newItem: any = '';
 
   @ViewChild(Content) content: Content;
 
   constructor(public navCtrl: NavController, public firebaseService:
     FirebaseServiceProvider) {
-    this.needItems = this.firebaseService.getItems();
+    this.tournaments = this.firebaseService.getTournaments();
   }
 
-  addItem(){
+  newTournament(){
     this.navCtrl.push(NewPage);
   }
 

@@ -4,7 +4,7 @@
       Turnier App
     </ion-title>
     <ion-buttons end>
-      <button ion-button solid icon-right (click)="addItem()" style="marginright:12px;
+      <button ion-button solid icon-right (click)="newTournament()" style="marginright:12px;
 padding:21px 16px 21px 16px">
         <ion-icon name="md-add"></ion-icon>
       </button>
@@ -14,7 +14,7 @@ padding:21px 16px 21px 16px">
 
 <ion-content padding>
   <ion-list>
-    <ion-item class="green" *ngFor="let item of needItems | async">
+    <ion-item class="green" *ngFor="let item of tournaments | async">
       <h2>{{item.name}}</h2>
       <p>Aktuelle Spiele:</p>
     </ion-item>

@@ -3,7 +3,7 @@ import { FirebaseServiceProvider } from '../../providers/firebase-service/fireba
 import { Participant } from '../../classes/Participant';
 
 import { Component, ViewChild } from '@angular/core';
-import { NavController, Content, Input } from 'ionic-angular';
+import { NavController, Content, TextInput } from 'ionic-angular';
 
 @Component({
   selector: 'page-new',
@@ -18,16 +18,13 @@ export class NewPage {
     participants: []
   }
 
-  newParticipant = new Participant()
-
-  firebaseService:FirebaseServiceProvider
+  newParticipant = new Participant();
 
   @ViewChild(Content) content: Content;
-  @ViewChild('newParticipantInput') newParticipantInput: Input;
+  @ViewChild('newParticipantInput') newParticipantInput: TextInput;
 
   constructor(public navCtrl: NavController, public firebaseService:
     FirebaseServiceProvider) {
-    this.firebaseService = firebaseService;
   }
 
   addParticipant(){

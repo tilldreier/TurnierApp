@@ -22,7 +22,7 @@ export class FirebaseServiceProvider {
     });
   }
 
-  getItems(){
+  getTournaments(){
     return this.items;
   }
   addTournament(tournament) {
