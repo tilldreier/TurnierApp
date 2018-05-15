@@ -1,29 +1,30 @@
-<ion-header>
+<ion-header class="blue">
   <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-  <ion-toolbar>
-    <ion-searchbar [(ngModel)]="newItem" (keyup.enter)="addItem()"
-                   (ionCancel)="this.newItem=''" placeholder="We Need..."></ion-searchbar>
+    <ion-title>
+      Turnier App
+    </ion-title>
     <ion-buttons end>
       <button ion-button solid icon-right (click)="addItem()" style="marginright:12px;
-padding:21px 16px 21px 16px">Add
-        <ion-icon name="md-basket"></ion-icon>
+padding:21px 16px 21px 16px">
+        <ion-icon name="md-add"></ion-icon>
       </button>
     </ion-buttons>
-  </ion-toolbar>
+  </ion-navbar>
 </ion-header>
-<ion-content (ionScroll)="onScroll($event)">
 
-  <div padding>
-    <h2 style="color:#5b5b75">We Need...</h2>
-  </div>
-
-  <ion-list no-padding>
-    <ion-item-sliding *ngFor="let item of needItems | async">
-      <ion-item (click)="itemTapped($event, item)" detail-push>
-        <h1>{{item.name}}</h1>
-      </ion-item>
-    </ion-item-sliding>
+<ion-content padding>
+  <ion-list>
+    <ion-item class="green" *ngFor="let item of needItems | async">
+      <h2>{{item.name}}</h2>
+      <p>Aktuelle Spiele:</p>
+    </ion-item>
+    <ion-item class="orange">
+      <h2>Turnier 2</h2>
+      <p>Aktuelle Spiele:</p>
+    </ion-item>
+    <ion-item class="red">
+      <h2>Turnier 3</h2>
+      <p>Aktuelle Spiele:</p>
+    </ion-item>
   </ion-list>
 </ion-content>
