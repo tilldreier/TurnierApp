@@ -5,6 +5,8 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, Content } from 'ionic-angular';
 
 import { NewPage } from '../new/new';
+import {TournamentPage} from "../tournament/tournament";
+import {Tournament} from "../../classes/Tournament";
 
 @Component({
   selector: 'page-home',
@@ -24,6 +26,10 @@ export class HomePage {
 
   newTournament(){
     this.navCtrl.push(NewPage);
+  }
+
+  goToTournament(tournament:Tournament){
+    this.navCtrl.push(TournamentPage,tournament);
   }
 
 }

@@ -12,6 +12,9 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { NewPage } from '../pages/new/new';
 import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
+import { LocalServiceProvider } from '../providers/local-service/local-service';
+import {SettingsPage} from "../pages/settings/settings";
+import {TournamentPage} from "../pages/tournament/tournament";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDYWp9Azz3lQ0lzYtYx0GG3Y66jO7G03-8",
@@ -26,7 +29,9 @@ const firebaseConfig = {
   declarations: [
     MyApp,
     HomePage,
-    NewPage
+    NewPage,
+    SettingsPage,
+    TournamentPage
   ],
   imports: [
     HttpModule,
@@ -39,13 +44,16 @@ const firebaseConfig = {
   entryComponents: [
     MyApp,
     HomePage,
-    NewPage
+    NewPage,
+    SettingsPage,
+    TournamentPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FirebaseServiceProvider
+    FirebaseServiceProvider,
+    LocalServiceProvider
   ]
 })
 export class AppModule {}

@@ -1,0 +1,75 @@
+<ion-header class="blue">
+  <ion-navbar>
+    <ion-title>
+      Turnier App
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item class="green">
+      <h2>Rangliste</h2>
+      <ion-grid>
+        <ion-row *ngFor="let ranking of tournament.getRanking(); let i = index;">
+          <ion-col>
+            {{i+1}}.
+          </ion-col>
+          <ion-col>
+            {{ranking.teamName}}
+          </ion-col>
+          <ion-col>
+            {{ranking.pointsFor}}
+          </ion-col>
+          <ion-col>
+            {{ranking.pointsAgainst}}
+          </ion-col>
+          <ion-col>
+            {{ranking.wins}}
+          </ion-col>
+          <ion-col>
+            {{ranking.draws}}
+          </ion-col>
+          <ion-col>
+            {{ranking.losses}}
+          </ion-col>
+          <ion-col>
+            {{ranking.points}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item class="orange">
+      <h2>Spielplan</h2>
+      <ion-grid>
+        <ion-row *ngFor="let game of tournament.getFixture(); let i = index;">
+          <ion-col>
+            {{game.team1Name}}
+          </ion-col>
+          <ion-col>
+            {{game.team2Name}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item class="red">
+      <h2>Resultate</h2>
+      <ion-grid>
+        <ion-row *ngFor="let game of tournament.getResults(); let i = index;">
+          <ion-col>
+            {{game.team1Name}}
+          </ion-col>
+          <ion-col>
+            {{game.team2Name}}
+          </ion-col>
+          <ion-col>
+            {{game.score1}}
+          </ion-col>
+          <ion-col>
+            {{game.score2}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>

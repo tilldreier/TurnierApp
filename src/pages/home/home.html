@@ -14,9 +14,19 @@ padding:21px 16px 21px 16px">
 
 <ion-content padding>
   <ion-list>
-    <ion-item class="green" *ngFor="let item of tournaments | async">
+    <ion-item class="green" *ngFor="let item of tournaments | async" (click)="goToTournament(item)">
       <h2>{{item.name}}</h2>
       <p>Aktuelle Spiele:</p>
+      <ion-grid>
+        <ion-row *ngFor="let game of item.getNextGames()">
+          <ion-col>
+            {{game.team1Name}}
+          </ion-col>
+          <ion-col>
+            {{game.team2Name}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-item>
     <ion-item class="orange">
       <h2>Turnier 2</h2>
