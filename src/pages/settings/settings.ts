@@ -1,10 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, Content } from 'ionic-angular';
+import {NavController, Content, ToastController} from 'ionic-angular';
 
 import {Tournament} from "../../classes/Tournament";
 import {LocalServiceProvider} from "../../providers/local-service/local-service";
 import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase-service";
-import {HomePage} from "../home/home";
 
 @Component({
   selector: 'page-settings',
@@ -19,7 +18,7 @@ export class SettingsPage {
   @ViewChild(Content) content: Content;
 
   constructor(public navCtrl: NavController, public firebaseService: FirebaseServiceProvider, public localService:
-    LocalServiceProvider) {
+    LocalServiceProvider, private toastCtrl: ToastController) {
     this.newTournament = localService.getNewTournament()
   }
 
@@ -35,7 +34,7 @@ export class SettingsPage {
 
       this.firebaseService.addTournament(this.newTournament);
 
-      this.navCtrl.push(HomePage);
+      this.navCtrl.popToRoot();
     }
   }
 }
