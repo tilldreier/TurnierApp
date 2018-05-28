@@ -1,3 +1,6 @@
 export class Participant{
-  name: String
+
+  constructor(public name: string = null) {
+
+  }
 }
