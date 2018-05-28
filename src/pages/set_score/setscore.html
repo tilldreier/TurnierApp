@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Resultat
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="close()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary" fixed>{{game.team1Name}}</ion-label>
+      <ion-input type="number" id="score1" [(ngModel)]="game.score1" placeholder="0" clearOnEdit="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" fixed>{{game.team2Name}}</ion-label>
+      <ion-input type="number" id="score2" [(ngModel)]="game.score2" placeholder="0" clearOnEdit="true"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button (click)="save()">
+    Save
+  </button>
+</ion-content>

@@ -15,6 +15,7 @@ import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-
 import { LocalServiceProvider } from '../providers/local-service/local-service';
 import {SettingsPage} from "../pages/settings/settings";
 import {TournamentPage} from "../pages/tournament/tournament";
+import {SetscorePage} from "../pages/set_score/setscore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDYWp9Azz3lQ0lzYtYx0GG3Y66jO7G03-8",
@@ -31,7 +32,8 @@ const firebaseConfig = {
     HomePage,
     NewPage,
     SettingsPage,
-    TournamentPage
+    TournamentPage,
+    SetscorePage
   ],
   imports: [
     HttpModule,
@@ -46,7 +48,8 @@ const firebaseConfig = {
     HomePage,
     NewPage,
     SettingsPage,
-    TournamentPage
+    TournamentPage,
+    SetscorePage
   ],
   providers: [
     StatusBar,

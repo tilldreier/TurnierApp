@@ -1,4 +1,6 @@
 export class Game{
+  id: number;
+
   team1: number;
   team2: number;
 

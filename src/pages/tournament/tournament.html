@@ -42,7 +42,7 @@
     <ion-item class="orange">
       <h2>Spielplan</h2>
       <ion-grid>
-        <ion-row *ngFor="let game of tournament.getFixture(); let i = index;">
+        <ion-row *ngFor="let game of tournament.getFixture(); let i = index;" (click)="addResult(game)">
           <ion-col>
             {{game.team1Name}}
           </ion-col>

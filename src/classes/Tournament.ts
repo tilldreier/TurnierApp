@@ -5,7 +5,7 @@ import {Ranking} from "./Ranking";
 
 export class Tournament {
 
-  constructor(public key: string = "",
+  constructor(public key: string = null,
               public name: string = "",
               public participants: Array<Participant> = [],
               public games: Array<Game> = [],
@@ -105,6 +105,7 @@ export class Tournament {
       let game = this.games[i];
       if (game.score1 == null && game.score2 == null) {
         this.setGameTeamName(game);
+        game.id=i;
         fixture.push(game);
       }
     }
@@ -120,6 +121,8 @@ export class Tournament {
     for (let i = 0; i < this.games.length; i++) {
       let game = this.games[i];
       if (game.score1 != null && game.score2 != null) {
+        game.score1=Number(game.score1);
+        game.score2=Number(game.score2);
         ranking[game.team1].pointsFor+=game.score1;
         ranking[game.team1].pointsAgainst+=game.score2;
         ranking[game.team2].pointsFor+=game.score2;

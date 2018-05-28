@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, Content, TextInput } from 'ionic-angular';
+import { NavController, Content } from 'ionic-angular';
 
 import {Tournament} from "../../classes/Tournament";
 import {LocalServiceProvider} from "../../providers/local-service/local-service";

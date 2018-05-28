@@ -5,6 +5,7 @@ import {AngularFireList} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
 import {Tournament} from "../../classes/Tournament";
 import "rxjs/add/operator/map";
+import {Game} from "../../classes/Game";
 
 /*
   Generated class for the FirebaseServiceProvider provider.
@@ -29,8 +30,17 @@ export class FirebaseServiceProvider {
   getTournaments(){
     return this.items;
   }
+
   addTournament(tournament) {
     return this.itemsRef.push(tournament);
   }
 
+  updateScore(tournament:Tournament, game:Game){
+    this.afd.database.ref('/tournaments/'+tournament.key+"/games/"+game.id).set({
+      team1: game.team1,
+      team2: game.team2,
+      score1: Number(game.score1),
+      score2: Number(game.score2)
+    });
+  }
 }
