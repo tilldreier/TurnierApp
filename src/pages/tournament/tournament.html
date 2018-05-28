@@ -1,12 +1,12 @@
 <ion-header class="blue">
-  <ion-navbar>
+  <ion-navbar text-left>
     <ion-title>
       Turnier App
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content no-padding>
+<ion-content no-padding class="green">
   <ion-list>
     <ion-item class="green">
       <h2>Rangliste</h2>
@@ -48,6 +48,9 @@
           </ion-col>
           <ion-col>
             {{game.team2Name}}
+          </ion-col>
+          <ion-col>
+            Resultat <ion-icon name="open"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-grid>
