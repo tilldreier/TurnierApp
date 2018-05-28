@@ -12,15 +12,15 @@ padding:21px 16px 21px 16px">Regeln
 <ion-content class="orange">
   <ion-list no-padding>
     <ion-item-sliding *ngFor="let item of newTournament.participants; let i = index;">
-      <ion-item>
+      <ion-item class="orange">
         <h1>{{i+1}}.</h1>
         <h1>{{item.name}}</h1>
       </ion-item>
     </ion-item-sliding>
     <ion-item>
       <h1>+</h1>
-      <ion-input id="newParticipantInput" #newParticipantInput [(ngModel)]="newParticipant.name" placeholder="Neuer Teilnehmer" clearOnEdit="true"
-                 (keyup.enter)="addParticipant($event)"></ion-input>
+      <ion-input class="orange" id="newParticipantInput" #newParticipantInput [(ngModel)]="newParticipant.name" placeholder="Neuer Teilnehmer" clearOnEdit="true"
+                 (keyup.enter)="addParticipant($event)" no-padding=""></ion-input>
     </ion-item>
   </ion-list>
 </ion-content>
