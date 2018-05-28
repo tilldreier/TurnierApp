@@ -17,9 +17,9 @@ padding:21px 16px 21px 16px">Regeln
         <h1>{{item.name}}</h1>
       </ion-item>
     </ion-item-sliding>
-    <ion-item>
+    <ion-item class="orange">
       <ion-label color="primary" fixed>+</ion-label>
-      <ion-input class="orange" id="newParticipantInput" #newParticipantInput [(ngModel)]="newParticipant.name" placeholder="Neuer Teilnehmer" clearOnEdit="true"
+      <ion-input id="newParticipantInput" #newParticipantInput [(ngModel)]="newParticipant.name" placeholder="Neuer Teilnehmer" clearOnEdit="true"
                  (keyup.enter)="addParticipant($event)" no-padding=""></ion-input>
     </ion-item>
   </ion-list>

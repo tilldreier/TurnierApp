@@ -42,3 +42,18 @@
 .blue {
   background-color: #34475A;
 }
+
+.text-input::-moz-placeholder {
+  color: white;
+}
+
+.text-input:-ms-input-placeholder {
+  color: white;
+}
+
+.text-input::-webkit-input-placeholder {
+  text-indent: 0;
+  color: white;
+}
+
+
