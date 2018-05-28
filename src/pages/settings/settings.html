@@ -2,14 +2,14 @@
   <ion-navbar>
     <ion-input [(ngModel)]="newTournament.name" placeholder="Neues Turnier"></ion-input>
     <ion-buttons end>
-      <button ion-button solid icon-right (click)="saveTournament()" style="marginright:12px;
-padding:21px 16px 21px 16px">Add
-        <ion-icon name="md-basket"></ion-icon>
+      <button ion-button solid class="green" icon-right (click)="saveTournament()" style="marginright:12px;
+padding:21px 16px 21px 16px">Speichern
+        <ion-icon name="checkmark"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content class="green">
+<ion-content class="red">
   <ion-list no-padding>
     <ion-item>
       <ion-label>Punkte Sieg:</ion-label>

@@ -2,14 +2,14 @@
   <ion-navbar>
     <ion-input [(ngModel)]="newTournament.name" placeholder="Neues Turnier"></ion-input>
     <ion-buttons end>
-      <button ion-button solid icon-right (click)="toSettings()" style="marginright:12px;
-padding:21px 16px 21px 16px">Add
-        <ion-icon name="md-basket"></ion-icon>
+      <button ion-button class="red" solid icon-right (click)="toSettings()" style="marginright:12px;
+padding:21px 16px 21px 16px">Regeln
+        <ion-icon name="arrow-forward"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content class="green">
+<ion-content class="orange">
   <ion-list no-padding>
     <ion-item-sliding *ngFor="let item of newTournament.participants; let i = index;">
       <ion-item>
