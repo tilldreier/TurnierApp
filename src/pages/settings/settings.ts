@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, Content } from 'ionic-angular';
+import {NavController, Content, ToastController} from 'ionic-angular';
 
 import {Tournament} from "../../classes/Tournament";
 import {LocalServiceProvider} from "../../providers/local-service/local-service";
@@ -18,13 +18,23 @@ export class SettingsPage {
   @ViewChild(Content) content: Content;
 
   constructor(public navCtrl: NavController, public firebaseService: FirebaseServiceProvider, public localService:
-    LocalServiceProvider) {
+    LocalServiceProvider, private toastCtrl: ToastController) {
     this.newTournament = localService.getNewTournament()
   }
 
   saveTournament(){
-    this.newTournament.generateGamePlan();
+    if(this.newTournament.name === null || this.newTournament.name === ""){
+      this.toastCtrl.create({
+        message: 'Bitte Turniernamen eingeben!',
+        duration: 3000,
+        position: 'top'
+      }).present();
+    }else{
+      this.newTournament.generateGamePlan();
 
-    this.firebaseService.addTournament(this.newTournament);
+      this.firebaseService.addTournament(this.newTournament);
+
+      this.navCtrl.popToRoot();
+    }
   }
 }
