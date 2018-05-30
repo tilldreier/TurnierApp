@@ -1,19 +1,17 @@
 <ion-header class="blue">
-  <ion-navbar text-left>
+  <ion-navbar>
     <ion-title>
       Turnier App
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content no-padding class="green">
+<ion-content no-padding>
   <ion-list>
-    <ion-item-divider class="green">
+    <ion-item class="green">
       <h2>Rangliste</h2>
-    </ion-item-divider>
-    <ion-item class="green" *ngFor="let ranking of tournament.getRanking(); let i = index;">
       <ion-grid>
-        <ion-row>
+        <ion-row *ngFor="let ranking of tournament.getRanking(); let i = index;">
           <ion-col>
             {{i+1}}.
           </ion-col>
@@ -41,30 +39,23 @@
         </ion-row>
       </ion-grid>
     </ion-item>
-    <ion-item-divider class="orange">
+    <ion-item class="orange">
       <h2>Spielplan</h2>
-    </ion-item-divider>
-    <ion-item class="orange" *ngFor="let game of tournament.getFixture()" (click)="addResult(game)">
       <ion-grid>
-        <ion-row>
+        <ion-row *ngFor="let game of tournament.getFixture(); let i = index;" (click)="addResult(game)">
           <ion-col>
             {{game.team1Name}}
           </ion-col>
           <ion-col>
             {{game.team2Name}}
           </ion-col>
-          <ion-col>
-            Resultat <ion-icon name="open"></ion-icon>
-          </ion-col>
         </ion-row>
       </ion-grid>
     </ion-item>
-    <ion-item-divider class="red">
+    <ion-item class="red">
       <h2>Resultate</h2>
-    </ion-item-divider>
-    <ion-item class="red" *ngFor="let game of tournament.getResults(); let i = index;">
       <ion-grid>
-        <ion-row>
+        <ion-row *ngFor="let game of tournament.getResults(); let i = index;">
           <ion-col>
             {{game.team1Name}}
           </ion-col>

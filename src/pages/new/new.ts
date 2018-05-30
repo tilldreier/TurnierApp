@@ -1,5 +1,7 @@
+import { FirebaseServiceProvider } from '../../providers/firebase-service/firebase-service';
+
 import { Component, ViewChild } from '@angular/core';
-import {NavController, Content, TextInput, ToastController} from 'ionic-angular';
+import { NavController, Content, TextInput } from 'ionic-angular';
 
 import { Participant } from '../../classes/Participant';
 import {Tournament} from "../../classes/Tournament";
@@ -15,40 +17,26 @@ import {SettingsPage} from "../settings/settings";
 export class NewPage {
 
   newTournament:Tournament;
+
   newParticipant:Participant;
-  participantNameToast:any;
 
   @ViewChild(Content) content: Content;
   @ViewChild('newParticipantInput') newParticipantInput: TextInput;
 
-  constructor(public navCtrl: NavController, public  localService: LocalServiceProvider, private toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public firebaseService:
+    FirebaseServiceProvider, public  localService: LocalServiceProvider) {
     this.newTournament = localService.createNewTournament();
     this.newParticipant = new Participant();
   }
 
   addParticipant(){
-    if(this.newParticipant.name === null || this.newParticipant.name === ""){
-      this.toastCtrl.create({
-        message: 'Bitte Namen des Teilnehmers eingeben!',
-        duration: 3000,
-        position: 'top'
-      }).present();
-    }else{
       this.newTournament.participants.push(this.newParticipant);
       this.newParticipant = new Participant();
       this.newParticipantInput.value="";
-    }
+
   }
 
   toSettings(){
-    if(this.newTournament.participants.length <= 2){
-      this.toastCtrl.create({
-        message: 'Erfasse mindestens 3 Teilnehmer!',
-        duration: 3000,
-        position: 'top'
-      }).present();
-    }else{
-      this.navCtrl.push(SettingsPage);
-    }
+    this.navCtrl.push(SettingsPage)
   }
 }
