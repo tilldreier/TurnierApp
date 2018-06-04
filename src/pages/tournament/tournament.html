@@ -9,7 +9,7 @@
 <ion-content no-padding class="green">
   <ion-list>
     <ion-item-divider class="green">
-      <h2>Rangliste</h2>
+      <h1>Rangliste</h1>
     </ion-item-divider>
     <ion-item class="green">
       <ion-row>
@@ -52,7 +52,7 @@
       </ion-grid>
     </ion-item>
     <ion-item-divider class="orange">
-      <h2>Spielplan</h2>
+      <h1>Spielplan</h1>
     </ion-item-divider>
     <ion-item class="orange" *ngFor="let game of tournament.getFixture()" (click)="addResult(game)">
       <ion-grid>
@@ -70,7 +70,7 @@
       </ion-grid>
     </ion-item>
     <ion-item-divider class="red">
-      <h2>Resultate</h2>
+      <h1>Resultate</h1>
     </ion-item-divider>
     <ion-item class="red" *ngFor="let game of tournament.getResults(); let i = index;">
       <ion-grid>
