@@ -11,14 +11,14 @@
     <ion-item-divider class="green">
       <h1>Rangliste</h1>
     </ion-item-divider>
-    <ion-item class="green" no-padding>
+    <ion-item-divider class="green" no-padding>
       <ion-row>
         <ion-col offset-4>S</ion-col>
-        <ion-col >U</ion-col>
+        <ion-col>U</ion-col>
         <ion-col>N</ion-col>
         <ion-col>P</ion-col>
       </ion-row>
-    </ion-item>
+    </ion-item-divider>
     <ion-item class="green" no-padding *ngFor="let ranking of tournament.getRanking(); let i = index;">
       <ion-grid text-left>
         <ion-row>
