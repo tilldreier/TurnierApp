@@ -88,5 +88,8 @@
         </ion-row>
       </ion-grid>
     </ion-item>
+    <ion-item *ngIf="tournament.getResults().length == 0" class="red">
+    <ion-row>Keine Resultate vorhanden</ion-row>
+    </ion-item>
   </ion-list>
 </ion-content>
