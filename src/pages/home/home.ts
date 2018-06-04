@@ -32,4 +32,10 @@ export class HomePage {
     this.navCtrl.push(TournamentPage,tournament);
   }
 
+  getClass(index: number){
+    let classes: Array<string> = ['green', 'orange', 'red'];
+
+    return classes[index % 3];
+  }
+
 }
