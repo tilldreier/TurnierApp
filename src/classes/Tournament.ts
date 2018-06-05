@@ -2,6 +2,7 @@ import {Participant} from "./Participant";
 import {Game} from "./Game";
 import {TournamentRules} from "./TournamentRules";
 import {Ranking} from "./Ranking";
+import {Notification} from "./Notification";
 
 export class Tournament {
 
@@ -9,7 +10,8 @@ export class Tournament {
               public name: string = "",
               public participants: Array<Participant> = [],
               public games: Array<Game> = [],
-              public rules: TournamentRules = new TournamentRules()) {
+              public rules: TournamentRules = new TournamentRules(),
+              public notification: Array<Notification> = []) {
 
   }
 

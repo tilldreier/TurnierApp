@@ -12,7 +12,7 @@ padding:21px 16px 21px 16px">Neues Turnier
   </ion-navbar>
 </ion-header>
 
-<ion-content no-padding>
+<ion-content no-padding class="green">
   <ion-list>
     <ion-item *ngFor="let item of tournaments | async; let i = index;" [ngClass]="getClass(i)" (click)="goToTournament(item)">
       <ion-grid>
@@ -37,4 +37,7 @@ padding:21px 16px 21px 16px">Neues Turnier
       </ion-grid>
     </ion-item>
   </ion-list>
+  <ion-fab bottom right large>
+    <button ion-fab mini class="blue"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>

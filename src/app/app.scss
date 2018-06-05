@@ -69,14 +69,22 @@
   font-weight: bold;
 }
 
- .item p{
+.item p{
    color: white;
 }
 
-ion-label .label label-md {
+ion-list ion-item ion-input {
   color: white;
 }
 
-input-wrapper {
+.item-inner {
+  border-color: white;
+}
 
+.item-inner .input-wrapper ion-label{
+  color: white;
+}
+
+ion-icon {
+  color: white;
 }
