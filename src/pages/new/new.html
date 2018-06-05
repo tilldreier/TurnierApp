@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-input [(ngModel)]="newTournament.name" placeholder="Neues Turnier"></ion-input>
+    <ion-input class="tournament-header" [(ngModel)]="newTournament.name" placeholder="Neues Turnier"></ion-input>
     <ion-buttons end>
       <button ion-button class="red" solid icon-right (click)="toSettings()" style="marginright:12px;
 padding:21px 16px 21px 16px">Regeln
@@ -13,13 +13,13 @@ padding:21px 16px 21px 16px">Regeln
   <ion-list no-padding>
     <ion-item-sliding *ngFor="let item of newTournament.participants; let i = index;">
       <ion-item class="orange">
-        <h2>{{i+1}}. {{item.name}}</h2>
+        {{item.name}}
       </ion-item>
     </ion-item-sliding>
     <ion-item class="orange">
-      <ion-label color="primary" fixed>+</ion-label>
       <ion-input id="newParticipantInput" #newParticipantInput [(ngModel)]="newParticipant.name" placeholder="Neuer Teilnehmer" clearOnEdit="true"
                  (keyup.enter)="addParticipant($event)" no-padding=""></ion-input>
+      <ion-label><ion-icon name="add"></ion-icon></ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

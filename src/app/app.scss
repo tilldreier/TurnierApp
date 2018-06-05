@@ -43,6 +43,10 @@
   background-color: #34475A;
 }
 
+.text-input {
+  color: white;
+}
+
 .text-input::-moz-placeholder {
   color: white;
 }
@@ -69,4 +73,10 @@
    color: white;
 }
 
+ion-label .label label-md {
+  color: white;
+}
 
+input-wrapper {
+
+}
