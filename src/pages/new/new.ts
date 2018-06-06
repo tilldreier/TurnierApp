@@ -5,6 +5,7 @@ import { Participant } from '../../classes/Participant';
 import {Tournament} from "../../classes/Tournament";
 import {LocalServiceProvider} from "../../providers/local-service/local-service";
 import {SettingsPage} from "../settings/settings";
+import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase-service";
 
 @Component({
   selector: 'page-new',
@@ -21,7 +22,7 @@ export class NewPage {
   @ViewChild(Content) content: Content;
   @ViewChild('newParticipantInput') newParticipantInput: TextInput;
 
-  constructor(public navCtrl: NavController, public  localService: LocalServiceProvider, private toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public firebaseService: FirebaseServiceProvider, public  localService: LocalServiceProvider, private toastCtrl: ToastController) {
     this.newTournament = localService.createNewTournament();
     this.newParticipant = new Participant();
   }
@@ -39,6 +40,8 @@ export class NewPage {
       this.newParticipantInput.value="";
     }
   }
+
+  deletParticipant(key){this.firebaseService.deleteItem(key)}
 
   toSettings(){
     if(this.newTournament.participants.length <= 2){

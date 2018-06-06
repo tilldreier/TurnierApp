@@ -6,6 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import {Tournament} from "../../classes/Tournament";
 import "rxjs/add/operator/map";
 import {Game} from "../../classes/Game";
+import {Notification} from "../../classes/Notification";
 
 /*
   Generated class for the FirebaseServiceProvider provider.
@@ -33,6 +34,14 @@ export class FirebaseServiceProvider {
 
   addTournament(tournament) {
     return this.itemsRef.push(tournament);
+  }
+
+  addNotification(notification) {
+    return this.itemsRef.push(notification)
+  }
+
+  deleteItem(key) {
+    this.itemsRef.remove(key)
   }
 
   updateScore(tournament:Tournament, game:Game){

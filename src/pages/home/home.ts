@@ -2,11 +2,12 @@ import { FirebaseServiceProvider } from '../../providers/firebase-service/fireba
 import { Observable } from 'rxjs/Observable';
 
 import { Component, ViewChild } from '@angular/core';
-import { NavController, Content } from 'ionic-angular';
+import {NavController, Content, ModalController} from 'ionic-angular';
 
 import { NewPage } from '../new/new';
 import {TournamentPage} from "../tournament/tournament";
 import {Tournament} from "../../classes/Tournament";
+import {SetnotificationPage} from "../set_notification/setnotification";
 
 @Component({
   selector: 'page-home',
@@ -20,7 +21,7 @@ export class HomePage {
   @ViewChild(Content) content: Content;
 
   constructor(public navCtrl: NavController, public firebaseService:
-    FirebaseServiceProvider) {
+    FirebaseServiceProvider, public modalCtrl: ModalController) {
     this.tournaments = this.firebaseService.getTournaments();
   }
 
@@ -36,6 +37,12 @@ export class HomePage {
     let classes: Array<string> = ['green', 'orange', 'red'];
 
     return classes[index % 3];
+  }
+
+  addNotification(){
+    let myModal = this.modalCtrl.create(SetnotificationPage);
+
+    myModal.present();
   }
 
 }
