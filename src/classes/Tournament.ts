@@ -219,7 +219,7 @@ export class Tournament {
       }
     }
 
-    if(started === true && allGamesPlayed === true && allPlayoffsPlayed === true){
+    if(started && allGamesPlayed && allPlayoffsPlayed){
       return "FINISHED";
     }else if(started === true && allGamesPlayed === true){
       return "REGULAR_SEASON_FINISHED";
