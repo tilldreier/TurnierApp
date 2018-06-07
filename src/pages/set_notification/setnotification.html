@@ -15,12 +15,8 @@
 <ion-content class="orange">
   <ion-list no-padding>
     <ion-item class="orange">
-      <ion-label color="primary" fixed>Turnier</ion-label>
-      <ion-input type="text" id="tournament" placeholder="0" clearOnEdit="true"></ion-input>
-    </ion-item>
-    <ion-item class="orange">
       <ion-label color="primary" floating>Mitteilung</ion-label>
-      <ion-input type="text" id="notification" placeholder="" clearOnEdit="true"></ion-input>
+      <ion-input type="text" id="notification" placeholder="" clearOnEdit="true" [(ngModel)]="newNotification.message"></ion-input>
     </ion-item>
   </ion-list>
   <ion-buttons end>

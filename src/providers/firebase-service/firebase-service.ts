@@ -52,4 +52,10 @@ export class FirebaseServiceProvider {
       score2: Number(game.score2)
     });
   }
+
+  updateNotifications(tournament:Tournament){
+    this.afd.database.ref('/tournaments/'+tournament.key+"/notifications").set(
+      tournament.notifications
+    );
+  }
 }

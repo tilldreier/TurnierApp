@@ -23,5 +23,15 @@ padding:21px 16px 21px 16px">Speichern
       <ion-label>Punkte Niederlage:</ion-label>
       <ion-input [(ngModel)]="newTournament.rules.lose"></ion-input>
     </ion-item>
+    <ion-item class="red">
+      <ion-label>Playoffs:</ion-label>
+      <ion-toggle [(ngModel)]="newTournament.rules.playoffs"></ion-toggle>
+    </ion-item>
+    <ion-item class="red" *ngIf="newTournament.rules.playoffs === true">
+      <ion-label>Playoffteilnehmer:</ion-label>
+      <ion-select [(ngModel)]="newTournament.rules.teamsInPlayoffs">
+        <ion-option *ngFor="let n of newTournament.numberOfPlayoffTeams();">{{n}}</ion-option>
+      </ion-select>
+    </ion-item>
   </ion-list>
 </ion-content>

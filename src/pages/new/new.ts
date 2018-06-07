@@ -22,7 +22,7 @@ export class NewPage {
   @ViewChild(Content) content: Content;
   @ViewChild('newParticipantInput') newParticipantInput: TextInput;
 
-  constructor(public navCtrl: NavController, public firebaseService: FirebaseServiceProvider, public  localService: LocalServiceProvider, private toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public  localService: LocalServiceProvider, private toastCtrl: ToastController) {
     this.newTournament = localService.createNewTournament();
     this.newParticipant = new Participant();
   }
@@ -41,7 +41,9 @@ export class NewPage {
     }
   }
 
-  deletParticipant(key){this.firebaseService.deleteItem(key)}
+  deleteParticipant(key){
+    this.newTournament.removeParticipant(key);
+  }
 
   toSettings(){
     if(this.newTournament.participants.length <= 2){

@@ -39,10 +39,4 @@ export class HomePage {
     return classes[index % 3];
   }
 
-  addNotification(){
-    let myModal = this.modalCtrl.create(SetnotificationPage);
-
-    myModal.present();
-  }
-
 }

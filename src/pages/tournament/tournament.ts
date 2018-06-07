@@ -5,6 +5,7 @@ import { NavController, NavParams, Content, ModalController } from 'ionic-angula
 import {Tournament} from "../../classes/Tournament";
 import {Game} from "../../classes/Game";
 import {SetscorePage} from "../set_score/setscore";
+import {SetnotificationPage} from "../set_notification/setnotification";
 
 @Component({
   selector: 'page-tournament',
@@ -22,9 +23,9 @@ export class TournamentPage {
   }
 
   addResult(game: Game){
-    let myModal = this.modalCtrl.create(SetscorePage, {game: game});
+    let setScoreModal = this.modalCtrl.create(SetscorePage, {game: game});
 
-    myModal.onDidDismiss(data => {
+    setScoreModal.onDidDismiss(data => {
       if(data.status === "SAVE"){
         this.firebaseService.updateScore(this.tournament, game);
       }else{
@@ -33,6 +34,20 @@ export class TournamentPage {
       }
     });
 
-    myModal.present();
+    setScoreModal.present();
+  }
+
+  addNotification(){
+    let addNotificationModal = this.modalCtrl.create(SetnotificationPage);
+
+    addNotificationModal.onDidDismiss(data => {
+      if(data.notification.message !== null &&
+        data.notification.message.length > 0){
+        this.tournament.addNotification(data.notification);
+        this.firebaseService.updateNotifications(this.tournament);
+      }
+    });
+
+    addNotificationModal.present();
   }
 }

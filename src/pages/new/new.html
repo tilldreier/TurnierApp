@@ -17,7 +17,7 @@ padding:21px 16px 21px 16px">Regeln
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="danger" icon-only
-                (click)="deletParticipant(item.key)"><ion-icon name="trash"></ion-icon></button> </ion-item-options>
+                (click)="deleteParticipant(i)"><ion-icon name="trash"></ion-icon></button> </ion-item-options>
     </ion-item-sliding>
     <ion-item class="orange">
       <ion-input id="newParticipantInput" #newParticipantInput [(ngModel)]="newParticipant.name" placeholder="Neuer Teilnehmer" clearOnEdit="true"

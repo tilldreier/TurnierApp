@@ -11,7 +11,8 @@ export class Tournament {
               public participants: Array<Participant> = [],
               public games: Array<Game> = [],
               public rules: TournamentRules = new TournamentRules(),
-              public notification: Array<Notification> = []) {
+              public notifications: Array<Notification> = [],
+              playoffGames: Array<Game> = []) {
 
   }
 
@@ -19,13 +20,15 @@ export class Tournament {
     return array.map(json => Tournament.fromJson(json))
   }
 
-  static fromJson({key, name, participants, games, rules}): Tournament {
+  static fromJson({key, name, participants, games, rules, notifications}): Tournament {
     return new Tournament(
       key,
       name,
       participants,
       games,
-      rules);
+      rules,
+      notifications
+    );
   }
 
   generateGamePlan() {
@@ -172,4 +175,59 @@ export class Tournament {
     game.team1Name = this.participants[game.team1].name;
     game.team2Name = this.participants[game.team2].name;
   }
+
+  removeParticipant(i:number){
+    this.participants.splice(i, 1);
+  }
+
+  addNotification(notification: Notification){
+    this.notifications.unshift(notification);
+  }
+
+  numberOfPlayoffTeams(){
+    let i=2;
+    let numberOfTeams: Array<number> = [];
+    do{
+      numberOfTeams.push(i);
+      i = i * 2;
+    }while (i<=this.participants.length);
+    return numberOfTeams;
+  }
+
+  getPlayoffGames(){
+    let status = this.getStatus();
+    if(this.playoffGames.length = 0){
+      this.getRanking()
+      for(let i=0; i<this.rules.teamsInPlayoffs;i++){
+
+      }
+
+    }
+
+  }
+
+  getStatus(){
+    let started:boolean = false;
+    let allGamesPlayed:boolean = true;
+    let allPlayoffsPlayed:boolean = false;
+    let i:number = 0;
+    for(let i = 0; i < this.games.length; i++){
+      if(this.games[i].score1 !== null && this.games[i].score2 !== null){
+        started = true;
+      }else{
+        allGamesPlayed = false;
+      }
+    }
+
+    if(started === true && allGamesPlayed === true && allPlayoffsPlayed === true){
+      return "FINISHED";
+    }else if(started === true && allGamesPlayed === true){
+      return "REGULAR_SEASON_FINISHED";
+    }else if(started === true){
+      return "STARTED";
+    }else{
+      return "NEW";
+    }
+  }
+
 }

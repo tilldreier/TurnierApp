@@ -1,6 +1,6 @@
 
 export class Notification {
 
-  message: String;
+  message: String="";
 
 }
