@@ -15,9 +15,13 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+<<<<<<< HEAD
 
 //Font
 * {
+=======
+ *{
+>>>>>>> 90827f9add71de1b13c5b3ab4060b0f9d57d6b9d
   color: white;
 }
 
@@ -83,3 +87,20 @@
 .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
   box-shadow: none;
 }
+
+ion-select{
+  color: white;
+}
+
+.alert-wrapper {
+  background-color: #E54D42 !important;
+}
+
+.alert-radio-icon {
+border-color: white !important;
+}
+
+.alert-radio-label {
+  color: white !important;
+}
+
