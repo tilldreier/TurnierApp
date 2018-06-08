@@ -1,5 +1,6 @@
 import { FirebaseServiceProvider } from '../../providers/firebase-service/firebase-service';
 import { Observable } from 'rxjs/Observable';
+import { StatusBar } from '@ionic-native/status-bar';
 
 import { Component, ViewChild } from '@angular/core';
 import {NavController, Content, ModalController} from 'ionic-angular';
@@ -20,8 +21,10 @@ export class HomePage {
   @ViewChild(Content) content: Content;
 
   constructor(public navCtrl: NavController, public firebaseService:
-    FirebaseServiceProvider, public modalCtrl: ModalController) {
+    FirebaseServiceProvider, public modalCtrl: ModalController, public statusBar: StatusBar) {
     this.tournaments = this.firebaseService.getTournaments();
+    this.statusBar.overlaysWebView(false);
+    this.statusBar.backgroundColorByHexString('#ffffff');
   }
 
   newTournament(){
