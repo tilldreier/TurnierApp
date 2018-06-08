@@ -209,7 +209,6 @@ export class Tournament {
         this.setGameTeamName(game);
         game.id=i;
         fixture.push(game);
-        return;
       }
     }
     return fixture;
@@ -221,9 +220,9 @@ export class Tournament {
       let playoffRound = this.playoffRounds[i];
       if(playoffRound.status !== PlayoffRound.STATUS_END){
         fixture.push(playoffRound);
+        return fixture;
       }
     }
-    return fixture;
   }
 
   getRanking(){
