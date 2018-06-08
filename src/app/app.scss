@@ -15,9 +15,9 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-* {
+/** {
   color: white;
-}
+}*/
 
 .toolbar-title {
   color: white;
@@ -86,5 +86,9 @@ ion-list ion-item ion-input {
 }
 
 ion-icon {
+  color: white;
+}
+
+ion-select{
   color: white;
 }
