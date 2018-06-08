@@ -6,7 +6,6 @@ import {Observable} from 'rxjs/Observable';
 import {Tournament} from "../../classes/Tournament";
 import "rxjs/add/operator/map";
 import {Game} from "../../classes/Game";
-import {Notification} from "../../classes/Notification";
 
 /*
   Generated class for the FirebaseServiceProvider provider.
@@ -20,7 +19,8 @@ export class FirebaseServiceProvider {
   items: Observable<Tournament[]>;
 
   constructor(public afd: AngularFireDatabase) {
-    this.itemsRef = this.afd.list('/tournaments/')
+
+    this.itemsRef = this.afd.list('/tournaments/', ref => ref.orderByChild('createdOnInverse'));
     this.items = this.itemsRef.snapshotChanges().map(changes => {
       return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
     }).map(
@@ -51,6 +51,18 @@ export class FirebaseServiceProvider {
       score1: Number(game.score1),
       score2: Number(game.score2)
     });
+  }
+
+  updateStatus(tournament: Tournament){
+    this.afd.database.ref('/tournaments/'+tournament.key).set({
+      status: tournament.status
+    });
+  }
+
+  savePlayoffs(tournament: Tournament) {
+    this.afd.database.ref('/tournaments/'+tournament.key+"/playoffRounds").set(
+      tournament.playoffRounds
+    );
   }
 
   updateNotifications(tournament:Tournament){

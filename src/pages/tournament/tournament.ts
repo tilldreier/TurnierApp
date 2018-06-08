@@ -28,6 +28,11 @@ export class TournamentPage {
     setScoreModal.onDidDismiss(data => {
       if(data.status === "SAVE"){
         this.firebaseService.updateScore(this.tournament, game);
+        if(this.tournament.updateStatus()){
+          this.firebaseService.updateStatus(this.tournament);
+        }
+        this.tournament.updatePlayoffs();
+        this.firebaseService.savePlayoffs(this.tournament);
       }else{
         game.score1 = null;
         game.score2 = null;

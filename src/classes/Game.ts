@@ -7,8 +7,16 @@ export class Game{
   team1Name: String;
   team2Name: String;
 
-  startsOn: Date;
-
   score1: number;
   score2: number;
+
+  playOffGame: boolean = false;
+
+  getWinner(){
+    if(this.score1>this.score2){
+      return {teamId:this.team1,teamName:this.team1Name};
+    }else{
+      return {teamId:this.team2,teamName:this.team2Name};
+    }
+  }
 }
