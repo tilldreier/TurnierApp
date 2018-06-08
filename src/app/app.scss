@@ -59,10 +59,6 @@
   background-color: #34475A;
 }
 
-.alert-wrapper {
-  background-color: #34475A !important;
-}
-
 //Form
 .tournament-header .text-input-md {
   font-size: large;
@@ -88,12 +84,20 @@ ion-select{
   color: white;
 }
 
-.alert-wrapper {
-  background-color: #E54D42 !important;
+.alert-md .alert-wrapper {
+  background-color: #E54D42 ;
+}
+
+.alert-md .alert-radio-label {
+  color: white;
+}
+
+.alert-md [aria-checked=true] .alert-radio-icon {
+  border-color: white;
 }
 
 .alert-md .alert-radio-icon {
-  border-color: white !important;
+  border-color: white;
 }
 
 .alert-md .alert-radio-inner {
@@ -101,6 +105,6 @@ ion-select{
 }
 
 .alert-radio-label {
-  color: white !important;
+  color: white;
 }
 
