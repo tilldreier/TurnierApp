@@ -42,7 +42,7 @@ const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebaseConfig),
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, { mode: 'md' })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
