@@ -76,6 +76,7 @@ export class Tournament {
 
     for (let i = 0; i < totalGames; i++) {
       let game = new Game();
+      game.id=i;
       let valid: boolean;
 
       do {
@@ -158,7 +159,7 @@ export class Tournament {
         return nextGames;
       }
     }
-    if(nextGames.length==0 && this.rules.playoffs == true){
+    if(this.rules.playoffs == true){
       for(let i=0;i<this.playoffRounds.length;i++){
         if(this.playoffRounds[i].games!=null){
           for(let j=0;j<this.playoffRounds[i].games.length;j++){
