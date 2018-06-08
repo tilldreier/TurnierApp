@@ -92,8 +92,12 @@ ion-select{
   background-color: #E54D42 !important;
 }
 
-.alert-radio-icon {
-border-color: white !important;
+.alert-md .alert-radio-icon {
+  border-color: white !important;
+}
+
+.alert-md .alert-radio-inner {
+  background-color: white;
 }
 
 .alert-radio-label {
