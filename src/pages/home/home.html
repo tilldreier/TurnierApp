@@ -26,6 +26,7 @@ padding:21px 16px 21px 16px">Neues Turnier
             <h2>Aktuelle Spiele:</h2>
           </ion-col>
         </ion-row>
+
         <ion-row *ngFor="let game of item.getNextGames()">
           <ion-col>
             <p>{{game.team1Name}}</p>

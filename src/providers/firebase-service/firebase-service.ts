@@ -46,6 +46,7 @@ export class FirebaseServiceProvider {
 
   updateScore(tournament:Tournament, game:Game){
     this.afd.database.ref('/tournaments/'+tournament.key+"/games/"+game.id).set({
+      playOffGame: game.playOffGame,
       team1: game.team1,
       team2: game.team2,
       score1: Number(game.score1),
@@ -54,7 +55,7 @@ export class FirebaseServiceProvider {
   }
 
   updateStatus(tournament: Tournament){
-    this.afd.database.ref('/tournaments/'+tournament.key).set({
+    this.afd.database.ref('/tournaments/'+tournament.key).update({
       status: tournament.status
     });
   }

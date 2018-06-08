@@ -24,13 +24,33 @@ export class Tournament {
               public status: string = Tournament.STATUS_NEW,
               public playoffRounds: Array<PlayoffRound> = []) {
     this.createdOnInverse = Tournament.MAX_DATE - this.createdOn;
+    for(let i=0;i<this.playoffRounds.length;i++){
+      let playOffgames:Array<Game>=[];
+      if(playoffRounds[i].games!=null) {
+        for (let j = 0; j < playoffRounds[i].games.length; j++) {
+          let game = playoffRounds[i].games[j];
+          playOffgames.push(new Game(
+            game.id,
+            game.team1,
+            game.team2,
+            game.team1Name,
+            game.team2Name,
+            game.score1,
+            game.score2,
+            game.playOffGame
+          ));
+        }
+      }
+      this.playoffRounds[i]=new PlayoffRound(playoffRounds[i].round,playoffRounds[i].roundName,[],playoffRounds[i].status);
+      this.playoffRounds[i].games=playOffgames;
+    }
   }
 
   static fromJsonList(array): Tournament[] {
     return array.map(json => Tournament.fromJson(json))
   }
 
-  static fromJson({key, name, createdOn, createdOnInverse, participants, games, rules, notifications,status}): Tournament {
+  static fromJson({key, name, createdOn, createdOnInverse, participants, games, rules, notifications, status, playoffRounds}): Tournament {
     return new Tournament(
       key,
       name,
@@ -40,7 +60,8 @@ export class Tournament {
       games,
       rules,
       notifications,
-      status
+      status,
+      playoffRounds
     );
   }
 
@@ -92,7 +113,7 @@ export class Tournament {
             }
           }
         }
-        if(numberOfTeamsLeft === 2){
+        if(numberOfTeamsLeft === 2 && i < totalGames-1){
           this.games.forEach((item) => {
             if (( team1 == item.team1 || team1 == item.team2 ) &&
               (team2 == item.team1 || team2 == item.team2)) {
@@ -137,6 +158,22 @@ export class Tournament {
         return nextGames;
       }
     }
+    if(nextGames.length==0 && this.rules.playoffs == true){
+      for(let i=0;i<this.playoffRounds.length;i++){
+        if(this.playoffRounds[i].games!=null){
+          for(let j=0;j<this.playoffRounds[i].games.length;j++){
+            let game = this.playoffRounds[i].games[j];
+            if (game.score1 == null && game.score2 == null) {
+              this.setGameTeamName(game);
+              nextGames.push(game);
+            }
+            if (nextGames.length == 3) {
+              return nextGames;
+            }
+          }
+        }
+      }
+    }
     return nextGames;
   }
 
@@ -152,6 +189,17 @@ export class Tournament {
     return results;
   }
 
+  getPlayoffResuts():Array<PlayoffRound>{
+    let results: Array<PlayoffRound> = [];
+    for (let i = 0; i < this.playoffRounds.length; i++) {
+      let playoffRound = this.playoffRounds[i];
+      if(playoffRound.status !== PlayoffRound.STATUS_PROV){
+        results.push(playoffRound);
+      }
+    }
+    return results;
+  }
+
   getFixture():Array<Game>{
     let fixture: Array<Game> = [];
     for (let i = 0; i < this.games.length; i++) {
@@ -160,6 +208,17 @@ export class Tournament {
         this.setGameTeamName(game);
         game.id=i;
         fixture.push(game);
+      }
+    }
+    return fixture;
+  }
+
+  getPlayoffFixture():Array<PlayoffRound>{
+    let fixture: Array<PlayoffRound> = [];
+    for (let i = 0; i < this.playoffRounds.length; i++) {
+      let playoffRound = this.playoffRounds[i];
+      if(playoffRound.status !== PlayoffRound.STATUS_END){
+        fixture.push(playoffRound);
       }
     }
     return fixture;
@@ -257,14 +316,19 @@ export class Tournament {
           if(i === 0){
             let rangking=this.getRanking();
             let j:number = 0;
+            playOffRound.games = [];
             do{
               let game = new Game();
+              game.id=j;
               game.playOffGame = true;
-              game.team1 = rangking[i].teamId;
-              game.team1Name = rangking[i].teamName;
-              game.team2 = rangking[this.rules.teamsInPlayoffs-1-i].teamId;
-              game.team2Name = rangking[this.rules.teamsInPlayoffs-1-i].teamName;
+              game.team1 = rangking[j].teamId;
+              game.team1Name = rangking[j].teamName;
+              game.team2 = rangking[this.rules.teamsInPlayoffs-1-j].teamId;
+              game.team2Name = rangking[this.rules.teamsInPlayoffs-1-j].teamName;
 
+              if(playOffRound.games == null){
+                playOffRound.games=[];
+              }
               playOffRound.games.push(game);
 
               j++;
@@ -275,10 +339,12 @@ export class Tournament {
             }
           }else{
             let prevRound=this.playoffRounds[i-1];
-            if(prevRound.status !== PlayoffRound.STATUS_END){
+            if(prevRound.status === PlayoffRound.STATUS_END){
               let j:number = 0;
+              playOffRound.games = [];
               do{
                 let game = new Game();
+                game.id=j;
                 game.playOffGame = true;
 
                 let winner1 = prevRound.games[j].getWinner();
@@ -289,12 +355,25 @@ export class Tournament {
                 game.team2 = winner2.teamId;
                 game.team2Name = winner2.teamName;
 
+                if(playOffRound.games == null){
+                  playOffRound.games=[];
+                }
                 playOffRound.games.push(game);
                 j++;
               }while(j < prevRound.games.length / 2)
 
               playOffRound.status = PlayoffRound.STATUS_FIX;
             }
+          }
+        }else if(playOffRound.status == PlayoffRound.STATUS_FIX){
+          let allPlayed:boolean = true;
+          for(let j=0;j<playOffRound.games.length;j++){
+            if(playOffRound.games[j].score1==null || playOffRound.games[j].score2==null ){
+              allPlayed=false;
+            }
+          }
+          if(allPlayed==true){
+            playOffRound.status = PlayoffRound.STATUS_END;
           }
         }
       }
@@ -318,14 +397,16 @@ export class Tournament {
     let allPlayoffsPlayed:boolean = false;
 
     for(let i = 0; i < this.games.length; i++){
-      if(this.games[i].score1 !== null && this.games[i].score2 !== null){
+      if(this.games[i].score1 != null && this.games[i].score2 != null){
         started = true;
       }else{
         allGamesPlayed = false;
       }
     }
 
-    if(this.rules.playoffs === false || (this.playoffRounds[this.playoffRounds.length-1].games[0].score1 !== null &&
+    if(this.rules.playoffs === false || (this.playoffRounds[this.playoffRounds.length-1].games != null &&
+      this.playoffRounds[this.playoffRounds.length-1].games.length === 1 &&
+      this.playoffRounds[this.playoffRounds.length-1].games[0].score1 !== null &&
       this.playoffRounds[this.playoffRounds.length-1].games[0].score2 !== null)){
       allPlayoffsPlayed = true;
     }

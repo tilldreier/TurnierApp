@@ -28,12 +28,12 @@
           <td>
             {{ranking.teamName}}
           </td>
-<!--          <ion-col float-right>
-            {{ranking.pointsFor}}
-          </ion-col>
-          <ion-col float-right>
-            {{ranking.pointsAgainst}}
-          </ion-col>-->
+          <!--          <ion-col float-right>
+                      {{ranking.pointsFor}}
+                    </ion-col>
+                    <ion-col float-right>
+                      {{ranking.pointsAgainst}}
+                    </ion-col>-->
           <td>
             {{ranking.wins}}
           </td>
@@ -49,6 +49,8 @@
         </tr>
       </table>
     </ion-item>
+  </ion-list>
+  <ion-list>
     <ion-item-divider class="orange">
       <h1>Spielplan</h1>
     </ion-item-divider>
@@ -62,11 +64,35 @@
             {{game.team2Name}}
           </ion-col>
           <ion-col>
-            Resultat <ion-icon name="open"></ion-icon>
+            Resultat
+            <ion-icon name="open"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-item>
+  </ion-list>
+  <ion-list *ngFor="let playOffRound of tournament.getPlayoffFixture()">
+    <ion-item-divider class="orange">
+      <h1>{{playOffRound.roundName}}</h1>
+    </ion-item-divider>
+    <ion-item class="orange" *ngFor="let game of playOffRound.getFixture()" (click)="addPlayoffResult(game,playOffRound)">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            {{game.team1Name}}
+          </ion-col>
+          <ion-col>
+            {{game.team2Name}}
+          </ion-col>
+          <ion-col>
+            Resultat
+            <ion-icon name="open"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+  <ion-list>
     <ion-item-divider class="red">
       <h1>Resultate</h1>
     </ion-item-divider>
@@ -89,19 +115,46 @@
       </ion-grid>
     </ion-item>
     <ion-item *ngIf="tournament.getResults().length == 0" class="red">
-    <ion-row>Keine Resultate vorhanden</ion-row>
+      <ion-row>Keine Resultate vorhanden</ion-row>
     </ion-item>
+  </ion-list>
+  <ion-list *ngFor="let playOffRound of tournament.getPlayoffResuts()">
+    <ion-item-divider class="red">
+      <h1>{{playOffRound.roundName}}</h1>
+    </ion-item-divider>
+    <ion-item class="red" *ngFor="let game of playOffRound.getResults()">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            {{game.team1Name}}
+          </ion-col>
+          <ion-col>
+            {{game.team2Name}}
+          </ion-col>
+          <ion-col>
+            {{game.score1}}
+          </ion-col>
+          <ion-col>
+            {{game.score2}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+  <ion-list>
     <ion-item-divider class="blue">
       <h1>Mitteilungen</h1>
     </ion-item-divider>
     <ion-item class="blue" *ngFor="let notification of tournament.notifications;">
-            {{notification.message}}
+      {{notification.message}}
     </ion-item>
     <ion-item *ngIf="tournament.notifications.length == 0" class="blue">
       <ion-row>Keine Mitteilungen vorhanden</ion-row>
     </ion-item>
   </ion-list>
   <ion-fab bottom right large>
-    <button ion-fab mini class="blue" (click)="addNotification()"><ion-icon name="add"></ion-icon></button>
+    <button ion-fab mini class="blue" (click)="addNotification()">
+      <ion-icon name="add"></ion-icon>
+    </button>
   </ion-fab>
 </ion-content>

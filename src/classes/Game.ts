@@ -1,16 +1,16 @@
 export class Game{
-  id: number;
+  constructor(
+    public id: number=0,
+    public team1: number=null,
+    public team2: number=null,
+    public team1Name: String=null,
+    public team2Name: String=null,
+    public score1:number=null,
+    public score2:number=null,
+    public playOffGame: boolean = false
+  ){
 
-  team1: number;
-  team2: number;
-
-  team1Name: String;
-  team2Name: String;
-
-  score1: number;
-  score2: number;
-
-  playOffGame: boolean = false;
+  }
 
   getWinner(){
     if(this.score1>this.score2){
