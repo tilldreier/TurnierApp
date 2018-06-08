@@ -5,14 +5,8 @@
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="close()">
-        <span ion-text color="white" showWhen="ios">Back</span>
+        <span ion-text color="white" showWhen="ios">Close</span>
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-buttons end>
-      <button ion-button solid class="green" icon-right (click)="save()" style="marginright:12px;
-padding:21px 16px 21px 16px">Speichern
-        <ion-icon name="checkmark"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -26,5 +20,10 @@ padding:21px 16px 21px 16px">Speichern
                  [(ngModel)]="newNotification.message"></ion-input>
     </ion-item>
   </ion-list>
-
+  <ion-buttons end>
+    <button ion-button solid class="green" icon-right (click)="save()" style="marginright:12px;
+padding:21px 16px 21px 16px">Speichern
+      <ion-icon name="checkmark"></ion-icon>
+    </button>
+  </ion-buttons>
 </ion-content>
