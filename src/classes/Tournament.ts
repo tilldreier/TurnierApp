@@ -208,6 +208,7 @@ export class Tournament {
         this.setGameTeamName(game);
         game.id=i;
         fixture.push(game);
+        return;
       }
     }
     return fixture;
