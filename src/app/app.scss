@@ -15,6 +15,8 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+
+//Font
 * {
   color: white;
 }
@@ -23,6 +25,20 @@
   color: white;
 }
 
+.item-md p {
+  color: white;
+}
+
+.item h1{
+  font-size: 1.4em;
+  font-weight: bold;
+}
+.item h2{
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+//Backgrounds
 .toolbar-background {
   background-color: #34475A;
 }
@@ -43,48 +59,27 @@
   background-color: #34475A;
 }
 
-.text-input {
+.alert-wrapper {
+  background-color: #34475A !important;
+}
+
+//Form
+.tournament-header .text-input-md {
+  font-size: large;
+}
+
+.alert-md [aria-checked=true] .alert-radio-label {
   color: white;
 }
 
-.text-input::-moz-placeholder {
+.item-input .label-md, .item-select .label-md, .item-datetime .label-md {
   color: white;
 }
 
-.text-input:-ms-input-placeholder {
-  color: white;
+.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+  border-bottom-color: white;
 }
 
-.text-input::-webkit-input-placeholder {
-  text-indent: 0;
-  color: white;
-}
-
-.item h1{
-  font-size: 1.4em;
-  font-weight: bold;
-}
-.item h2{
-  font-size: 0.9em;
-  font-weight: bold;
-}
-
-.item p{
-   color: white;
-}
-
-ion-list ion-item ion-input {
-  color: white;
-}
-
-.item-inner {
-  border-color: white;
-}
-
-.item-inner .input-wrapper ion-label{
-  color: white;
-}
-
-ion-icon {
-  color: white;
+.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+  box-shadow: none;
 }
