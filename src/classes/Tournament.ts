@@ -249,7 +249,7 @@ export class Tournament {
   updatePlayoffs(){
     //let status = this.getStatus();
     if(this.rules.playoffs){
-      for(let i:number=0; i<this.playoffRounds;i++){
+      for(let i:number=0; i<this.playoffRounds.length;i++){
         let playOffRound = this.playoffRounds[i];
 
         if(playOffRound.status == PlayoffRound.STATUS_PROV){
