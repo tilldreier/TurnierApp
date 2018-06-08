@@ -5,7 +5,6 @@ import { Participant } from '../../classes/Participant';
 import {Tournament} from "../../classes/Tournament";
 import {LocalServiceProvider} from "../../providers/local-service/local-service";
 import {SettingsPage} from "../settings/settings";
-import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase-service";
 
 @Component({
   selector: 'page-new',
@@ -17,7 +16,6 @@ export class NewPage {
 
   newTournament:Tournament;
   newParticipant:Participant;
-  participantNameToast:any;
 
   @ViewChild(Content) content: Content;
   @ViewChild('newParticipantInput') newParticipantInput: TextInput;

@@ -7,7 +7,6 @@ import {NavController, Content, ModalController} from 'ionic-angular';
 import { NewPage } from '../new/new';
 import {TournamentPage} from "../tournament/tournament";
 import {Tournament} from "../../classes/Tournament";
-import {SetnotificationPage} from "../set_notification/setnotification";
 
 @Component({
   selector: 'page-home',

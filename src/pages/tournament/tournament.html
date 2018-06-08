@@ -11,43 +11,43 @@
     <ion-item-divider class="green">
       <h1>Rangliste</h1>
     </ion-item-divider>
-    <ion-item-divider class="green" no-padding>
-      <ion-row>
-        <ion-col offset-4>S</ion-col>
-        <ion-col>U</ion-col>
-        <ion-col>N</ion-col>
-        <ion-col>P</ion-col>
-      </ion-row>
-    </ion-item-divider>
-    <ion-item class="green" no-padding *ngFor="let ranking of tournament.getRanking(); let i = index;">
-      <ion-grid text-left>
-        <ion-row>
-          <ion-col>
+    <ion-item class="green">
+      <table text-left width="100%">
+        <tr>
+          <th></th>
+          <th></th>
+          <th>S</th>
+          <th>U</th>
+          <th>N</th>
+          <th>P</th>
+        </tr>
+        <tr *ngFor="let ranking of tournament.getRanking(); let i = index;">
+          <td>
             {{i+1}}.
-          </ion-col>
-          <ion-col>
+          </td>
+          <td>
             {{ranking.teamName}}
-          </ion-col>
+          </td>
 <!--          <ion-col float-right>
             {{ranking.pointsFor}}
           </ion-col>
           <ion-col float-right>
             {{ranking.pointsAgainst}}
           </ion-col>-->
-          <ion-col>
+          <td>
             {{ranking.wins}}
-          </ion-col>
-          <ion-col>
+          </td>
+          <td>
             {{ranking.draws}}
-          </ion-col>
-          <ion-col>
+          </td>
+          <td>
             {{ranking.losses}}
-          </ion-col>
-          <ion-col>
+          </td>
+          <td>
             {{ranking.points}}
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+          </td>
+        </tr>
+      </table>
     </ion-item>
     <ion-item-divider class="orange">
       <h1>Spielplan</h1>
